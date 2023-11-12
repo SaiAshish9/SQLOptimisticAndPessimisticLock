@@ -32,4 +32,8 @@
     return invoiceWriteResult;
   }
 
+  @Transactional("tenantTransactionManager")
+  public CostChanges updateOneInvoice(String invoiceId) throws IOException {
+    InvoiceV2 invoice = invoiceRepo.findInvoiceByIdPessimisticLock(invoiceId);
+
 ```
